@@ -12,16 +12,11 @@ DIST_DIR := dist
 # Source file
 SRC := $(SRC_DIR)/main.c
 
-# Output executable
-EXE := $(DIST_DIR)/detect
-
 # Targets and rules
 .PHONY: all clean
 
-all: $(EXE)
-
-$(EXE): $(SRC) | $(DIST_DIR)
-	$(CC) $(CFLAGS) $< -o $@
+main: $(SRC) | $(DIST_DIR)
+	gcc main.c bmp/bmp.c ${CFLAGS} -o $(DIST_DIR)/$(O)
 
 $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
